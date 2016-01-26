@@ -1,0 +1,25 @@
+You'll need to add the following files:
+
+* Spark (tested version 1.4.1)
+* mongodb-driver-3.2.1.jar
+* mongodb-driver-core-3.2.1.jar
+* mongo-hadoop-core-1.4.0.jar
+* Recent snapshot of the Movielens database in ./data/
+
+Also, you'll need
+* MongoDB running on localhost:27017
+* MeteorJS, with MONGO_URL set to localhost:27017
+* Pandas
+* Pymongo
+
+To run:
+* Run loader.py. This should only need to happen once. 
+* In webui, run "meteor run"
+* Rate some movies
+* pyspark processor.spark.py
+* Your movie recommendations will appear!
+
+You might want to adjust:
+* The threshold for ratings that get saved to the database, in processor.spark.py. 
+* We only load ratings for the top 1000 most-rated movies, to avoid really obscure stuff. You can adjust that in loader.py.
+* The number of ratings loaded before training, in loader.py.
