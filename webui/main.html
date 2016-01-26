@@ -1,0 +1,52 @@
+<head>
+  <title>Spark Movie Recommender</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div class="logo"></div>
+    <h1 class="title">Spark Movie Recommender</h1>
+  <div class="outer">
+    <div class="subtitle">Rate some movies:</div>
+    {{> input_ratings}}
+{{> stats}}
+  </div>
+<div class="recs">
+<div class="subtitle">Your recommendations:</div>
+    {{> recommendations}}
+</div>
+</body>
+
+<template name="input_ratings">
+  <ol class="input_ratings">
+    {{#each ratings}}
+      {{> rating}}
+    {{/each}}
+  </ol>
+</template>
+
+<template name="rating">
+  <li class="rating">
+    <span class="name">{{name}}</span>
+    <span class="score">{{> starsRating class='ratingwidget' rating=input_rating_val mutable=true}}</span>
+  </li>
+</template>
+
+<template name="recommendations">
+{{#each recs}}
+{{> one_rec}}
+{{/each}}
+</template>
+
+<template name="one_rec">
+<p>
+{{movietoname}} [{{value.rating}}]</P>
+</template>
+
+<template name="stats">
+    <p>User ID: {{user_id}}</p>
+    <p>Total ratings: {{total_ratings}}</p>
+    <p>Total recommendations: {{total_recommendations}}</p>
+    <p>Active users: {{active_users}}</p>
+</template>
